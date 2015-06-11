@@ -14,5 +14,6 @@ Some key elements we will be looking for in the application are:
 ##Getting Started
 *	Register for a free API key at: https://developer.forecast.io/
 *	The API to query is https://api.forecast.io/forecast/{Your API key here}/{latitude},{longitude}. We would like you to obtain the geolocation using the API’s available from the mobile operating system. 
-*	The use of frameworks, libraries, and open-source code is allowed – but please reference their use in comments in the code. Please use package management for open source dependencies where suitable. 
+*	Submissions for the Android platform may only use third party libraries or open source code for the purpose of unit testing.
+*	For other platforms the use of frameworks, libraries, and open-source code is allowed – but please reference their use in comments in the code. Please use package management for open source dependencies where suitable. 
 *	When complete, please fork this repository, commit your code via the GIT tools, and send us a pull request. 
