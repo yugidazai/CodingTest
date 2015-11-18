@@ -1,13 +1,7 @@
 package duc.assessment.weatherforecast.utilities;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Objects;
 
 import duc.assessment.weatherforecast.models.SimpleWeatherForecastInfo;
 
@@ -29,10 +23,37 @@ public class JSONParser {
     private static final String SUMMARY_KEY = "summary";
     private static final String ICON_KEY = "icon";
 
-    public static SimpleWeatherForecastInfo parseCurrentlyResult(JSONObject jsonObj) {
+    public static SimpleWeatherForecastInfo parseCurrentlyInfo(JSONObject jsonObj) {
+        return parseSimpleDataPoint(jsonObj, CURRENTLY_KEY);
+    }
+
+    public static SimpleWeatherForecastInfo parseMinutelyInfo(JSONObject jsonObj) {
+        return parseSimpleDataPoint(jsonObj, MINUTELY_KEY);
+    }
+
+    public static SimpleWeatherForecastInfo parseHourlyInfo(JSONObject jsonObj) {
+        return parseSimpleDataPoint(jsonObj, HOURLY_KEY);
+    }
+
+    public static SimpleWeatherForecastInfo parseDailyInfo(JSONObject jsonObj) {
+        return parseSimpleDataPoint(jsonObj, DAILY_KEY);
+    }
+
+    public static String parseTimezone(JSONObject jsonObj) {
         if (jsonObj != null) {
             try {
-                return parseSimpleDataPoint(jsonObj.getJSONObject(CURRENTLY_KEY));
+                return jsonObj.getString(TIMEZONE_KEY);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
+    public static String parseOffset(JSONObject jsonObj) {
+        if (jsonObj != null) {
+            try {
+                return jsonObj.getString(OFFSET_KEY);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -45,8 +66,16 @@ public class JSONParser {
      * "A data point object represents the various weather phenomena occurring
      * at a specific instant of time, and has many varied properties".
      * */
-    private static SimpleWeatherForecastInfo parseSimpleDataPoint(JSONObject jsonObject) throws JSONException{
-        return new SimpleWeatherForecastInfo(
-                jsonObject.getString(SUMMARY_KEY), jsonObject.getString(ICON_KEY));
+    private static SimpleWeatherForecastInfo parseSimpleDataPoint(JSONObject jsonObject, String key) {
+        if (jsonObject != null) {
+            try {
+                JSONObject dataPoint = jsonObject.getJSONObject(key);
+                return new SimpleWeatherForecastInfo(
+                        dataPoint.getString(SUMMARY_KEY), dataPoint.getString(ICON_KEY));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
     }
 }

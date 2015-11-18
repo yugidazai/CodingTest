@@ -12,13 +12,6 @@ import static org.junit.Assert.assertEquals;
  */
 public class JSONDownloaderTest {
     @Test
-    public void getJSONObjectFromApi_returnsCorrectJSONObject() throws Exception {
-        JSONObject result = JSONDownloader.getJSONObjectFromApi(
-                "https://api.forecast.io/forecast/e853da9b766bfeae67d9d518abf8d7c0/37.8267,-122.423");
-        assertEquals("Test downloading correct data", "America/Los_Angeles", result.getString("timezone"));
-    }
-
-    @Test
     public void getJSONObjectFromApi_wrongAPIKey() throws Exception {
         JSONObject result = JSONDownloader.getJSONObjectFromApi(
                 "https://api.forecast.io/forecast/invalidapikey/37.8267,-122.423");

@@ -1,10 +1,12 @@
 <resources>
     <string name="app_name">WeatherForecast</string>
     <string name="credit_display_text">Powered by Forecast</string>
+    <string name="progress_dialog_msg">Loading info...</string>
     <string name="currently_text">Now</string>
-    <string name="minutely_text">Minutely</string>
-    <string name="hourly_text">Hourly</string>
-    <string name="daily_text">Daily</string>
+    <string name="minutely_text">Next hour</string>
+    <string name="hourly_text">Next 24 hours</string>
+    <string name="daily_text">Next 7 days</string>
     <string name="refresh">Refresh</string>
     <string name="fail_to_load_msg">Failed to load forecast weather info. Please try again with REFRESH button.</string>
+    <string name="fail_to_load_location">Failed to load location. Please check network connection.</string>
 </resources>

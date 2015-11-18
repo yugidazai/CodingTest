@@ -18,24 +18,25 @@ https://api.forecast.io/forecast/e853da9b766bfeae67d9d518abf8d7c0/[location].
 
 - Forecast weather data is loaded by using an implementation of AsyncTask to download JSON string from URL, then parse this JSON string to get weather's summary and icon info.
 
-- Unit tests for JSONParser class and JSONDownloader.
-
+- Unit tests for JSONParser and JSONDownloader class.
 
 
 ***Development Environment
 
-- IDE: Android Studio with JUnit4, Mockito and Hamcrest for UnitTest
+- IDE: Android Studio
+- JUnit4, Mockito, PowerMock and Hamcrest for UnitTest
 
-- JDK jdk1.8.0_31 (jdk1.7.xxx is still compatible)
-
+- JDK jdk1.7.0_79
 - SDK Tools: (recent previous version of these tools might still be compatible)
   
+	Android 5.1.1
 	Android SDK Build Tools
   
 	Android SDK Tools 24.4.1
   
 	Android SDK Platform-Tools 23.0.1
-  
+
+	Android Support Library
 	Intel x86 Emulator Accelerator (HAXM installer), rev 5.5 (in case of running emulator)
 
 
