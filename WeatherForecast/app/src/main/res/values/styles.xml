@@ -11,7 +11,18 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="CurrentTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:padding">@dimen/text_padding</item>
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:textSize">@dimen/current_text_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ItemTextViewStyle" parent="CurrentTextViewStyle">
+        <item name="android:textSize">@dimen/item_text_size</item>
+        <item name="android:textStyle">normal</item>
+    </style>
 
 </resources>

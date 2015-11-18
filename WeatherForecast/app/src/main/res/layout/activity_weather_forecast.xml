@@ -1,25 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:fitsSystemWindows="true"
-    tools:context=".WeatherForecastActivity">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/activity_weather_forecast" tools:context=".WeatherForecastActivity">
 
-    <android.support.design.widget.AppBarLayout android:layout_height="wrap_content"
-        android:layout_width="match_parent" android:theme="@style/AppTheme.AppBarOverlay">
-
-        <android.support.v7.widget.Toolbar android:id="@+id/toolbar"
-            android:layout_width="match_parent" android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary" app:popupTheme="@style/AppTheme.PopupOverlay" />
-
-    </android.support.design.widget.AppBarLayout>
-
-    <include layout="@layout/content_weather_forecast" />
-
-    <android.support.design.widget.FloatingActionButton android:id="@+id/fab"
-        android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end" android:layout_margin="@dimen/fab_margin"
-        android:src="@android:drawable/ic_dialog_email" />
-
-</android.support.design.widget.CoordinatorLayout>
+    <LinearLayout
+        android:id="@+id/timezone_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:gravity="right|center_horizontal"
+        android:background="@android:color/background_light"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/timezone_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="normal"
+            style="@style/CurrentTextViewStyle"/>
+        <TextView
+            android:id="@+id/offset_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/ItemTextViewStyle"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/current_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_current_item_height"
+        android:padding="@dimen/layout_item_padding"
+        android:layout_below="@id/timezone_layout"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/current_text"
+            android:layout_width="@dimen/text_width"
+            android:layout_height="match_parent"
+            android:text="@string/currently_text"
+            style="@style/CurrentTextViewStyle"/>
+        <TextView
+            android:id="@+id/current_summary_text"
+            android:layout_width="@dimen/current_summary_text_width"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/item_left_margin"
+            style="@style/CurrentTextViewStyle"/>
+        <ImageView
+            android:id="@+id/current_icon"
+            android:layout_width="@dimen/layout_current_item_height"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"/>
+    </LinearLayout>
+    <View
+        android:id="@+id/current_divider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_height"
+        android:background="@color/divider_color"
+        android:layout_below="@id/current_layout"/>
+    <LinearLayout
+        android:id="@+id/minutely_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_another_item_height"
+        android:padding="@dimen/layout_item_padding"
+        android:layout_below="@id/current_divider"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/minutely_text"
+            android:layout_width="@dimen/text_width"
+            android:layout_height="match_parent"
+            android:text="@string/minutely_text"
+            style="@style/ItemTextViewStyle"/>
+        <TextView
+            android:id="@+id/minutely_summary_text"
+            android:layout_width="@dimen/item_summary_text_width"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/item_left_margin"
+            style="@style/ItemTextViewStyle"/>
+        <ImageView
+            android:id="@+id/minutely_icon"
+            android:layout_width="@dimen/layout_another_item_height"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"/>
+    </LinearLayout>
+    <View
+        android:id="@+id/minutely_divider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_height"
+        android:background="@color/divider_color"
+        android:layout_below="@id/minutely_layout"/>
+    <LinearLayout
+        android:id="@+id/hourly_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_another_item_height"
+        android:padding="@dimen/layout_item_padding"
+        android:layout_below="@id/minutely_divider"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/hourly_text"
+            android:layout_width="@dimen/text_width"
+            android:layout_height="match_parent"
+            android:text="@string/hourly_text"
+            style="@style/ItemTextViewStyle"/>
+        <TextView
+            android:id="@+id/hourly_summary_text"
+            android:layout_width="@dimen/item_summary_text_width"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/item_left_margin"
+            style="@style/ItemTextViewStyle"/>
+        <ImageView
+            android:id="@+id/hourly_icon"
+            android:layout_width="@dimen/layout_another_item_height"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"/>
+    </LinearLayout>
+    <View
+        android:id="@+id/hourly_divider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_height"
+        android:background="@color/divider_color"
+        android:layout_below="@id/hourly_layout"/>
+    <LinearLayout
+        android:id="@+id/daily_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_another_item_height"
+        android:padding="@dimen/layout_item_padding"
+        android:layout_below="@id/hourly_divider"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/daily_text"
+            android:layout_width="@dimen/text_width"
+            android:layout_height="match_parent"
+            android:text="@string/daily_text"
+            style="@style/ItemTextViewStyle"/>
+        <TextView
+            android:id="@+id/daily_summary_text"
+            android:layout_width="@dimen/item_summary_text_width"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/item_left_margin"
+            style="@style/ItemTextViewStyle"/>
+        <ImageView
+            android:id="@+id/daily_icon"
+            android:layout_width="@dimen/layout_another_item_height"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"/>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/credit_section"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true" />
+    <Button
+        android:id="@+id/refresh_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="@string/refresh" />
+</RelativeLayout>

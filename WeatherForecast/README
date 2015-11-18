@@ -1,0 +1,61 @@
+/* ******************
+ * Author: Duc Nguyen
+ * Email: yugidazai@gmail.com
+ * ********************/
+
+==============================================================================================
+
+
+***Assessment requirement
+
+- Display forecast weather information of data retrieved from API
+ 
+https://api.forecast.io/forecast/e853da9b766bfeae67d9d518abf8d7c0/[location].
+- Each valid API (with any longitude,latitude value) returns a JSON string with summary and icon information
+ of "currently", "minutely", "hourly" and "daily" then display UI on screen.
+
+***Implementation
+
+- Forecast weather data is loaded by using an implementation of AsyncTask to download JSON string from URL, then parse this JSON string to get weather's summary and icon info.
+
+- Unit tests for JSONParser class and JSONDownloader.
+
+
+
+***Development Environment
+
+- IDE: Android Studio with JUnit4, Mockito and Hamcrest for UnitTest
+
+- JDK jdk1.8.0_31 (jdk1.7.xxx is still compatible)
+
+- SDK Tools: (recent previous version of these tools might still be compatible)
+  
+	Android SDK Build Tools
+  
+	Android SDK Tools 24.4.1
+  
+	Android SDK Platform-Tools 23.0.1
+  
+	Intel x86 Emulator Accelerator (HAXM installer), rev 5.5 (in case of running emulator)
+
+
+
+***HOW TO RUN APP from Android Studio
+
+1. Load project into Android Studio
+
+2. Build project using menu "Build" in toolbar, then "Make project"
+
+3. menu "Run" > "Run 'app'"
+
+
+
+***How to run UnitTest with Android Studio
+
+1. Select tab "Build Variants" > change test artifact to "Unit Tests" 
+
+2. Right-click on unit test class/method > choose "Run ..."
+
+***Creadits:
+- weather icons are downloaded from http://www.ontariotrails.on.ca/assets/images/site/icon/weather/
+- weather data is extracted from API in http://forecast.io/
